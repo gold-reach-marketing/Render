@@ -7,15 +7,15 @@ from google.ads.googleads.client import GoogleAdsClient
 from google.ads.googleads.errors import GoogleAdsException
 
 def gads_client():
-    # Build client from environment vars; no local yaml needed
     return GoogleAdsClient.load_from_dict({
-        "developer_token": os.getenv("GADS_DEV_TOKEN"),
-        "client_id": os.getenv("GADS_CLIENT_ID"),
-        "client_secret": os.getenv("GADS_CLIENT_SECRET"),
-        "refresh_token": os.getenv("GADS_REFRESH_TOKEN"),
-        "login_customer_id": os.getenv("GADS_LOGIN_CUSTOMER_ID", None),
+        "developer_token":    os.getenv("GADS_DEV_TOKEN"),
+        "client_id":          os.getenv("GADS_CLIENT_ID"),
+        "client_secret":      os.getenv("GADS_CLIENT_SECRET"),
+        "refresh_token":      os.getenv("GADS_REFRESH_TOKEN"),
+        "login_customer_id":  os.getenv("GADS_LOGIN_CUSTOMER_ID", None),
+        "use_proto_plus":     True,   # <-- add this line
     })
-
+    
 CUSTOMER_ID   = os.getenv("GOOGLE_ADS_CUSTOMER_ID")   # no dashes
 DEFAULT_LANG  = os.getenv("DEFAULT_LANGUAGE_ID", "1000")  # English
 DEFAULT_GEO   = os.getenv("DEFAULT_GEO_ID", "2840")       # United States
